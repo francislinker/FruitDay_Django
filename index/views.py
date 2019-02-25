@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
+from .forms import *
 
 # Create your views here.
 def index(request):
@@ -7,7 +8,8 @@ def index(request):
 
 def login(request):
     if request.method == 'GET':
-        return render(request,"login.html")
+        form = LoginForm()
+        return render(request,"login.html",locals())
     else:
         uphone = request.POST['uphone']
         upwd = request.POST['upwd']
